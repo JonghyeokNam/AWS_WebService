@@ -1,0 +1,40 @@
+server:
+  servlet:
+    encoding:
+      force-response: true
+
+spring:
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: AWS_WebService
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQLDB_USERNAME}
+    url: jdbc:mysql://localhost:3306/aws
+    password: ${MYSQLDB_PASSWORD}
+
+  jpa:
+    properties:
+      show_sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test
+            client-secret: test
+            # 구글 기본 scope가 openid, profile, email 인데, openid 제외하려면 아래처럼 오버라이딩
+            scope:
+              - profile
+              - email

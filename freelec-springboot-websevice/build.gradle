@@ -41,6 +41,16 @@ dependencies {
 
 	// mustache
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
+	// OAuth2
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	// session
+	implementation 'org.springframework.session:spring-session-jdbc'
+
+	// security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
